@@ -77,15 +77,16 @@ class TreeInfo:
         ts = self.ts
         edges_parent = ts.edges_parent
         edges_child = ts.edges_child
-
+        nodes_time = ts.nodes_time
+        
         df = pd.DataFrame(
             {
                 "left": ts.edges_left,
                 "right": ts.edges_right,
                 "parent": edges_parent,
                 "child": edges_child,
-                "parent_time": ts.tables.nodes.time[edges_parent],
-                "child_time": ts.tables.nodes.time[edges_child],
+                "parent_time": nodes_time[edges_parent],
+                "child_time": nodes_time[edges_child]
             }
         )
 
@@ -96,7 +97,7 @@ class TreeInfo:
                 "parent": "int",
                 "child": "int",
                 "parent_time": "float64",
-                "child_time": "float64",
+                "child_time": "float64"
             }
         )
 
